@@ -104,12 +104,40 @@ char *C_HL_keywords[] = {
 	"void|", NULL
 };
 
+char *VHDL_HL_extensions[] = { ".vhd", ".vhdl", NULL };
+char *VHDL_HL_keywords[] = {
+	"abs", "configuration", "impure", "null", "rem", "type", "access", "constant", 
+	"in", "of", "report", "unaffected", "after", "disconnect", "inertial", "on", 
+	"return", "units", "alias", "downto", "inout", "open", "rol", "until", "all", 
+	"else", "is", "ror", "use", "elsif", "label", "others", "select", "variable", 
+	"architecture", "end", "library", "out", "severity", "wait", "array", "entity", 
+	"linkage", "package", "signal", "when", "assert", "exit", "literal", "port", 
+	"shared", "while", "attribute", "file", "loop", "postponed", "sla", "with", 
+	"begin", "for", "map", "procedure", "sll", "block", "function", "mod", "process", 
+	"sra", "body", "generate", "pure", "srl", "buffer", "generic", "new", "range", 
+	"subtype", "bus", "group", "next", "record", "then", "case", "guarded", 
+	"register", "to", "component", "if", "reject", "transport",
+
+	"and|", "or|", "not|", "xor|", "nand|", "nor|", "xnor|",
+	"bit|", "bit_vector|", "integer|",
+	"std_logic|", "std_ulogic|", "std_logic_vector|", "std_ulogic_vector|", NULL
+
+};
+
 struct editorSyntax HLDB[] = {
 	{
 		"c",
 		C_HL_extensions,
 		C_HL_keywords,
 		"//", "/*", "*/",
+		HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
+	},
+
+	{
+		"vhdl",
+		VHDL_HL_extensions,
+		VHDL_HL_keywords,
+		"--", NULL, NULL, // VHDL has no multiline comments, so these are set to NULL
 		HL_HIGHLIGHT_NUMBERS | HL_HIGHLIGHT_STRINGS
 	},
 };
